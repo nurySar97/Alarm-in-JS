@@ -78,6 +78,12 @@
             color: white;
         }
 
+        button:focus {
+            cursor: pointer;
+            background: black;
+            color: white;
+        }
+
         .div {
             display: flex;
         }
@@ -112,6 +118,12 @@
     </div>
 
 
+    <audio id="myAudio">
+        <source src="sounds/iphone.mp3" type="audio/mp3">
+        <source src="sounds/iphone.oog" type="audio/ogg">
+    </audio>
+
+
 <script>
     $(".hours").val("00")
     $(".minutes").val("00")
@@ -125,12 +137,10 @@
     let result;
     let stop;
 
-
-    let audio = new Audio();
-
-    audio.src = "sounds/iphone.mp3"
+    let music = document.getElementById("myAudio")
 
     $(".button").on("click",function(){
+        music.pause()
         takenTames = [];
 
         takenTames.push(hours.val())
@@ -142,8 +152,6 @@
 
         $(".text").text("Alarm Started To Work!!!");
         $(".button").text("Start")
-
-        audio.pause()
 
     })
     
@@ -202,7 +210,7 @@
             console.log("It works Boss!")
             stop = false
             $(".text").text("Get Up!")
-            audio.play()
+            music.play()
 
             $(".button").text("STOP")
         }
